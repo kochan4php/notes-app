@@ -1,0 +1,22 @@
+<%= erb :'layouts/header', locals: {title: 'Create New Notes', css_path: '/css/note.css'} %>
+<%= erb :'layouts/navbar' %>
+<div class="container my-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-sm-12">
+      <h1 class="h3 mb-3 fw-medium text-center">Create New Note</h1>
+      <form action="/notes" method="post">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="title" placeholder="Title" name="title" autofocus required>
+          <label for="title">Create Note's title</label>
+        </div>
+        <div class="my-3"></div>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Content" id="floatingTextarea" name="body" required></textarea>
+          <label for="body">Your Note's content</label>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 my-3">Create Note</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%= erb :'layouts/footer' %>
