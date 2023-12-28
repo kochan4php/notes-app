@@ -2,6 +2,18 @@
 <div class="container">
   <div class="row justify-content-center align-items-center text-center">
     <div class="col-lg-4 col-sm-12">
+      <% if session[:success_message] %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= session[:success_message] %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+      <% if session[:error_message] %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= session[:error_message] %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
       <h1 class="h3 mb-3 fw-medium">Please Login</h1>
       <form action="/login" method="post">
         <div class="form-floating">
