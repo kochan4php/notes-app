@@ -1,3 +1,3 @@
 not_found do
-  '404 Not Found'
+  erb :not_found
 end

@@ -1,17 +1,57 @@
 <%= erb :'layouts/header', locals: {title: 'Notes', css_path: '/css/note.css'} %>
 <%= erb :'layouts/navbar' %>
 <div class="container my-3">
-  <div class="row">
-    <div class="col-lg-4 col-sm-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <form action="/notes/" method="post">
-            <a href="/notes" class="card-link btn btn-primary">Edit</a>
-            <button type="submit" class="card-link btn btn-danger">Delete</button>
-          </form>
+  <div class="row justify-content-center mb-3">
+    <div class="col-md-10 col-sm-12">
+      <h1 class="text-center">
+        Your notes
+      </h1>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-sm-12">
+      <% if @success_message %>
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-sm-12">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <%= @success_message %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
         </div>
+      <% end %>
+      <div class="row justify-content-center">
+        <% if @notes.count == 0 %>
+          <div class="col-lg-4 col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                No notes found.
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <% @notes.each do |note| %>
+            <div class="col-lg-4 col-sm-12">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title"><%= note['title'] %></h5>
+                  <p class="card-text">
+                    <% if note['body'].length > 30 %>
+                      <%= note['body'].slice(0, 30) + '...' %>
+                    <% else %>
+                      <%= note['body'] %>
+                    <% end %>
+                  </p>
+                  <form action="/notes/<%= note['id'] %>" method="post">
+                    <a href="/notes/<%= note['id'] %>/edit" class="card-link btn btn-sm btn-primary rounded-1">Edit</a>
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="card-link btn btn-sm btn-danger rounded-1">Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

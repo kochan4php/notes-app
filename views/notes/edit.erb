@@ -4,14 +4,17 @@
   <div class="row justify-content-center">
     <div class="col-lg-4 col-sm-12">
       <h1 class="h3 mb-3 fw-medium text-center">Edit Note</h1>
-      <form action="/notes/" method="post">
+      <form action="/notes/<%= @note['id'] %>" method="post">
+        <input type="hidden" name="_method" value="put">
         <div class="form-floating">
-          <input type="text" class="form-control" id="title" placeholder="Title" name="title" autofocus required>
+          <input type="text" class="form-control" id="title" placeholder="Title" name="title" autofocus required value="<%= @note['title'] %>"/>
           <label for="title">Edit Note's title</label>
         </div>
         <div class="my-3"></div>
         <div class="form-floating">
-          <textarea class="form-control" placeholder="Content" id="floatingTextarea" name="body" required></textarea>
+          <textarea class="form-control" placeholder="Content" id="floatingTextarea" name="body" required>
+              <%= @note['body'] %>
+            </textarea>
           <label for="body">Your Note's content</label>
         </div>
         <button type="submit" class="btn btn-primary w-100 my-3">Edit Note</button>

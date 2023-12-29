@@ -1,5 +1,6 @@
 if $PROGRAM_NAME == __FILE__
   require 'sinatra'
+  require 'sinatra/contrib'
 
   # load app config
   require_relative 'config/app'
