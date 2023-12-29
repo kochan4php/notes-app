@@ -4,7 +4,12 @@ class Database
   protected
 
   def client
-    Mysql2::Client.new(host: 'localhost', username: 'root', password: '', database: 'db_runanotes')
+    Mysql2::Client.new(
+      host: ENV['DB_HOST'],
+      username: ENV['DB_USERNAME'],
+      password: ENV['DB_PASSWORD'],
+      database: ENV['DB_DATABASE']
+    )
   end
 
   def query_stmt(statement)
