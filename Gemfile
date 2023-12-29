@@ -9,3 +9,5 @@ gem 'solargraph', '~> 0.50.0'
 gem 'bcrypt', '~> 3.1'
 
 gem 'dotenv', '~> 2.8'
+
+gem 'puma', '~> 6.4'

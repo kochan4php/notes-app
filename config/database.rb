@@ -8,6 +8,7 @@ class Database
       host: ENV['DB_HOST'],
       username: ENV['DB_USERNAME'],
       password: ENV['DB_PASSWORD'],
+      port: ENV['DB_PORT'],
       database: ENV['DB_DATABASE']
     )
   end
